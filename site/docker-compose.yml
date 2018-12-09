@@ -1,0 +1,9 @@
+version: "3"
+services:
+  api:
+    build: .
+    volumes:
+      - ./api:/code
+    command: ['php', 'artisan', 'serve', '--host=0.0.0.0']
+    ports:
+      - "8000:8000"
