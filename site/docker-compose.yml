@@ -1,9 +1,18 @@
 version: "3"
 services:
-  api:
+  app:
     build: .
     volumes:
-      - ./api:/code
-    command: ['php', 'artisan', 'serve', '--host=0.0.0.0']
+      - ./code:/code
     ports:
-      - "8000:8000"
+      - "3000:3000"
+
+  database:
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=dbpass
+    volumes:
+      - db:/var/lib/postgres/data
+
+volumes:
+  db:

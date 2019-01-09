@@ -1,0 +1,36 @@
+<h1>Activities</h1>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Tags</th>
+      <th>Status</th>
+      <th>Story points</th>
+      <th>Hours</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= activity.category %></td>
+        <td><%= activity.tags %></td>
+        <td><%= activity.status %></td>
+        <td><%= activity.story_points %></td>
+        <td><%= activity.hours %></td>
+        <td>
+          <%= link_to 'Edit', edit_activity_path(activity), class: 'btn btn-sm btn-primary' %>
+          <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Activity', new_activity_path, class: 'btn btn-primary' %>
